@@ -1,16 +1,16 @@
 
-import { Persona } from 'src/resources/personas/entities/persona.entity';
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Persona } from "src/resources/personas/entities/persona.entity";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 @Entity()
 export class Telefono {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id:string; 
 
-    @Column('text')
+    @Column("text")
     tipo: string;
 
-    @Column('text')
+    @Column("text")
     numero: string;
 
     @ManyToOne(

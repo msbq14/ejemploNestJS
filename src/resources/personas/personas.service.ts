@@ -1,14 +1,14 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { CreatePersonaDto } from './dto/create-persona.dto';
-import { UpdatePersonaDto } from './dto/update-persona.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Persona } from './entities/persona.entity';
-import { Repository } from 'typeorm';
-import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { Injectable, Logger } from "@nestjs/common";
+import { CreatePersonaDto } from "./dto/create-persona.dto";
+import { UpdatePersonaDto } from "./dto/update-persona.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Persona } from "./entities/persona.entity";
+import { Repository } from "typeorm";
+import { PaginationDto } from "src/common/dto/pagination.dto";
 
 @Injectable()
 export class PersonasService {
-  private logger = new Logger('PersonasService');
+  private logger = new Logger("PersonasService");
   constructor(
     @InjectRepository(Persona)
     private readonly personaRepository: Repository<Persona>
@@ -22,7 +22,7 @@ export class PersonasService {
         statusCode: 200,
         response: {
           title: "Correcto",
-          message: 'Persona creada exitosamente',
+          message: "Persona creada exitosamente",
         },
         personaDB
       }
@@ -38,15 +38,15 @@ export class PersonasService {
       const personas = await this.personaRepository.find({
         take: itemsPage,
         skip: (page - 1) * itemsPage,
-        relations: ['telefonos']
+        relations: ["telefonos"]
       });
 
       
       return {
         statusCode: 200,
         response: {
-          title: 'Correcto',
-          message: 'Personas recuperadas exitosamente',
+          title: "Correcto",
+          message: "Personas recuperadas exitosamente",
         },
         pagination: {
           page,
@@ -60,8 +60,8 @@ export class PersonasService {
       return {
         statusCode: 500,
         response: {
-          title: 'Error',
-          message: 'Error del servidor',
+          title: "Error",
+          message: "Error del servidor",
           error: error
         },
       }
@@ -79,7 +79,7 @@ export class PersonasService {
         return {
           statusCode: 404,
           response: {
-            title: 'Error',
+            title: "Error",
             message: `Persona con id ${id} no encontrada`,
 
           },
@@ -91,8 +91,8 @@ export class PersonasService {
       return {
         statusCode: 200,
         response: {
-          title: 'Correcto',
-          message: 'Persona actualizada correctamente'
+          title: "Correcto",
+          message: "Persona actualizada correctamente"
         },
         persona: updated
       }
@@ -101,8 +101,8 @@ export class PersonasService {
       return {
         statusCode: 500,
         response: {
-          title: 'Error',
-          message: 'Error del servidor',
+          title: "Error",
+          message: "Error del servidor",
           error: error
         },
       }
@@ -118,7 +118,7 @@ export class PersonasService {
         return {
           statusCode: 404,
           response: {
-            title: 'Error',
+            title: "Error",
             message: `Persona con id ${id} no encontrada`,
 
           },
@@ -128,8 +128,8 @@ export class PersonasService {
       return {
         statusCode: 200,
         response: {
-          title: 'Correcto',
-          message: 'Persona eliminada exitosamente'
+          title: "Correcto",
+          message: "Persona eliminada exitosamente"
         },
       }
 
@@ -138,8 +138,8 @@ export class PersonasService {
       return {
         statusCode: 500,
         response: {
-          title: 'Error',
-          message: 'Error del servidor',
+          title: "Error",
+          message: "Error del servidor",
           error: error
         },
       }

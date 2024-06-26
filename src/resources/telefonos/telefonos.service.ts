@@ -1,14 +1,14 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { CreateTelefonoDto } from './dto/create-telefono.dto';
-import { UpdateTelefonoDto } from './dto/update-telefono.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Telefono } from './entities/telefono.entity';
-import { Repository } from 'typeorm';
-import { Persona } from '../personas/entities/persona.entity';
-import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { Injectable, Logger, NotFoundException } from "@nestjs/common";
+import { CreateTelefonoDto } from "./dto/create-telefono.dto";
+import { UpdateTelefonoDto } from "./dto/update-telefono.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Telefono } from "./entities/telefono.entity";
+import { Repository } from "typeorm";
+import { Persona } from "../personas/entities/persona.entity";
+import { PaginationDto } from "src/common/dto/pagination.dto";
 @Injectable()
 export class TelefonosService {
-  private logger = new Logger('TelefonosService');
+  private logger = new Logger("TelefonosService");
 
   constructor(
     @InjectRepository(Telefono)
@@ -30,8 +30,8 @@ export class TelefonosService {
         return {
           statusCode: 404,
           response: {
-            title: 'No encontrado',
-            message: 'Persona con id no encontrada'
+            title: "No encontrado",
+            message: "Persona con id no encontrada"
           }
         }
       }
@@ -45,7 +45,7 @@ export class TelefonosService {
         statusCode: 200,
         response: {
           title: "Correcto",
-          message: 'Telefono creado exitosamente',
+          message: "Telefono creado exitosamente",
         },
         telefonoDB
       }
@@ -62,15 +62,15 @@ export class TelefonosService {
       const telefonos = await this.telefonoRepository.find({
         take: itemsPage,
         skip: (page - 1) * itemsPage,
-        relations: ['persona']
+        relations: ["persona"]
       });
 
       
       return {
         statusCode: 200,
         response: {
-          title: 'Correcto',
-          message: 'Telefonos recuperados exitosamente',
+          title: "Correcto",
+          message: "Telefonos recuperados exitosamente",
         },
         pagination: {
           page,
@@ -84,8 +84,8 @@ export class TelefonosService {
       return {
         statusCode: 500,
         response: {
-          title: 'Error',
-          message: 'Error del servidor',
+          title: "Error",
+          message: "Error del servidor",
           error: error
         },
       }
@@ -99,7 +99,7 @@ export class TelefonosService {
         return {
           statusCode: 404,
           response: {
-            title: 'Error',
+            title: "Error",
             message: `Telefono con id ${id} no encontrado`,
 
           },
@@ -111,8 +111,8 @@ export class TelefonosService {
       return {
         statusCode: 200,
         response: {
-          title: 'Correcto',
-          message: 'Telefono actualizado correctamente'
+          title: "Correcto",
+          message: "Telefono actualizado correctamente"
         },
         persona: updated
       }
@@ -121,8 +121,8 @@ export class TelefonosService {
       return {
         statusCode: 500,
         response: {
-          title: 'Error',
-          message: 'Error del servidor',
+          title: "Error",
+          message: "Error del servidor",
           error: error
         },
       }
@@ -144,7 +144,7 @@ export class TelefonosService {
         return {
           statusCode: 404,
           response: {
-            title: 'Error',
+            title: "Error",
             message: `Teléfono con id ${id} no encontrado`,
 
           },
@@ -154,8 +154,8 @@ export class TelefonosService {
       return {
         statusCode: 200,
         response: {
-          title: 'Correcto',
-          message: 'Teléfono eliminado exitosamente'
+          title: "Correcto",
+          message: "Teléfono eliminado exitosamente"
         },
 
       }
@@ -165,8 +165,8 @@ export class TelefonosService {
       return {
         statusCode: 500,
         response: {
-          title: 'Error',
-          message: 'Error del servidor',
+          title: "Error",
+          message: "Error del servidor",
           error: error
         },
       }

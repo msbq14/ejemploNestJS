@@ -1,21 +1,22 @@
-import { Telefono } from 'src/resources/telefonos/entities/telefono.entity';
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import { Telefono } from "src/resources/telefonos/entities/telefono.entity";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 
+"typeorm";
 @Entity()
 export class Persona {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column({
-        type: 'text',
+        type: "text",
         unique: true
     })
     cedula: string;
 
-    @Column('text')
+    @Column("text")
     nombre: string;
 
-    @Column('text')
+    @Column("text")
     direccion: string;
 
     @OneToMany(
