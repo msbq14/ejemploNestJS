@@ -9,6 +9,7 @@ import { TelefonosModule } from './resources/telefonos/telefonos.module';
   imports: [
     PersonasModule,
     TelefonosModule,
+    
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'ejemplo.db',
