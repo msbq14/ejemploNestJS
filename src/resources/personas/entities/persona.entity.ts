@@ -22,6 +22,5 @@ export class Persona {
         () => Telefono,
         (telefono) => telefono.persona
     )
-    @JoinColumn()
     telefonos: Telefono[];
 }

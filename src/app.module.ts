@@ -10,12 +10,12 @@ import { TelefonosModule } from './resources/telefonos/telefonos.module';
     PersonasModule,
     TelefonosModule,
     TypeOrmModule.forRoot({
-    type: 'sqlite',
-    database: 'ejemplo.db',
-    entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    synchronize: true,
-  }),],
+      type: 'sqlite',
+      database: 'ejemplo.db',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

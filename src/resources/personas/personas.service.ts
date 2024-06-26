@@ -41,8 +41,7 @@ export class PersonasService {
         relations: ['telefonos']
       });
 
-      let total = await this.personaRepository.count();
-      let pages = Math.ceil(total / itemsPage);
+      
       return {
         statusCode: 200,
         response: {
@@ -51,8 +50,7 @@ export class PersonasService {
         },
         pagination: {
           page,
-          itemsPage,
-          total
+          itemsPage
         },
         personas
 
@@ -114,7 +112,7 @@ export class PersonasService {
 
 
   async remove(id: string) {
-    try{
+    try {
       const registroPersona = await this.personaRepository.findOne({ where: { id } });
       if (!registroPersona) {
         return {
@@ -126,16 +124,16 @@ export class PersonasService {
           },
         }
       }
-      const  deletedPersona = await this.personaRepository.delete(registroPersona);
-      return{
+      const deletedPersona = await this.personaRepository.delete(registroPersona);
+      return {
         statusCode: 200,
         response: {
           title: 'Correcto',
           message: 'Persona eliminada exitosamente'
         },
       }
-    
-    }catch(error){
+
+    } catch (error) {
       this.logger.error(error);
       return {
         statusCode: 500,
@@ -146,6 +144,6 @@ export class PersonasService {
         },
       }
     }
-   
+
   }
 }
