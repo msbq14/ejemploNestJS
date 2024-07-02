@@ -1,4 +1,4 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { CreatePersonaDto } from "./dto/create-persona.dto";
 import { UpdatePersonaDto } from "./dto/update-persona.dto";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -27,6 +27,9 @@ export class PersonasService {
         personaDB
       }
     } catch (error) {
+      if(error.errno === 19){
+        throw new BadRequestException(`Person with id alredy exists`);
+      }
       this.logger.error(error);
     }
   }
